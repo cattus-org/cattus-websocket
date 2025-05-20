@@ -1,5 +1,11 @@
+import os
+from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 
-client = AsyncIOMotorClient("mongodb+srv://cattus-web:ZycXOL2qALXurYW0@cattus-api.sgnegkc.mongodb.net/?retryWrites=true&w=majority&appName=cattus-api")
+load_dotenv()
+
+client = AsyncIOMotorClient(os.getenv("DATABASE_URL"))
 db = client["test"]
-collection = db["notifications"]
+
+notifications_collection = db["notifications"]
+activities_collection = db["activities"]
