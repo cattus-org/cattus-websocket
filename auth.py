@@ -1,8 +1,9 @@
+import os
 from jose import JWTError, jwt
 from fastapi import WebSocket, HTTPException, status
 
-SECRET_KEY = "gatinhos"
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("SECRET_KEY_ALGORITHM")
 
 def decode_jwt_token(token: str):
     try:
